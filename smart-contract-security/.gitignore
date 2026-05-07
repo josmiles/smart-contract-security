@@ -1,0 +1,19 @@
+# Environment
+.env
+.env.local
+
+# Foundry
+foundry-exploits/out/
+foundry-exploits/cache/
+foundry-exploits/lib/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Keys — NEVER commit private keys
+*.key
+*.pem
