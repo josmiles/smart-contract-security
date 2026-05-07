@@ -191,7 +191,7 @@ grep -n "\.send(" contracts/*.sol
 ---
 
 ## Status
-- [ ] Solved on Ethernaut
-- [ ] Attack contract written
-- [ ] Foundry exploit written and passing
-- [ ] Added to GitHub
+- [x] Solved on Ethernaut
+- [x] Attack contract written
+- [x] Foundry exploit written and passing
+- [x] Added to GitHub

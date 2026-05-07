@@ -79,6 +79,6 @@ function flashLoan(uint256 borrowAmount) external {
 ---
 
 ## Status
-- [ ] Solved on Damn Vulnerable DeFi
-- [ ] Foundry test written
-- [ ] Added to GitHub
+- [x] Solved on Damn Vulnerable DeFi
+- [x] Foundry test written
+- [x] Added to GitHub

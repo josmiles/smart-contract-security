@@ -55,8 +55,8 @@ smart-contract-security/
 | Level | Name | Vulnerability | Status |
 |-------|------|--------------|--------|
 | 00 | Hello Ethernaut | Tutorial | ⬜ |
-| 01 | Fallback | Fallback function ownership takeover | ⬜ |
-| 02 | Fallout | Constructor naming bug | ⬜ |
+| 01 | Fallback | Fallback function ownership takeover | ✅ |
+| 02 | Fallout | Constructor naming bug | ✅ |
 | 03 | Coin Flip | Weak randomness (block variables) | ⬜ |
 | 04 | Telephone | tx.origin vs msg.sender | ⬜ |
 | 05 | Token | Integer underflow (pre-0.8) | ⬜ |
@@ -64,12 +64,12 @@ smart-contract-security/
 | 07 | Force | Selfdestruct ETH forcing | ⬜ |
 | 08 | Vault | Private variable visibility | ⬜ |
 | 09 | King | Denial of service via revert | ⬜ |
-| 10 | Reentrancy | Classic reentrancy attack | ⬜ |
+| 10 | Reentrancy | Classic reentrancy attack | ✅ |
 
 ### Damn Vulnerable DeFi
 | Level | Name | Vulnerability | Status |
 |-------|------|--------------|--------|
-| 01 | Unstoppable | Flash loan griefing | ⬜ |
+| 01 | Unstoppable | Flash loan griefing | ✅ |
 | 02 | Naive Receiver | Unprotected flash loan receiver | ⬜ |
 | 03 | Truster | Arbitrary calldata in flash loan | ⬜ |
 | 04 | Side Entrance | Flash loan accounting flaw | ⬜ |

@@ -86,6 +86,6 @@ contract Fallout {
 ---
 
 ## Status
-- [ ] Solved on Ethernaut
-- [ ] Foundry exploit written
-- [ ] Added to GitHub
+- [x] Solved on Ethernaut
+- [x] Foundry exploit written
+- [x] Added to GitHub
