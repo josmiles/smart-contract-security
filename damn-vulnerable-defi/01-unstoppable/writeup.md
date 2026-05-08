@@ -1,84 +1,56 @@
-# DVDeFi Level 01 — Unstoppable
+# Damn Vulnerable DeFi - Level 01: Unstoppable
+
+| Field | Details |
+|-------|---------|
+| Platform | Damn Vulnerable DeFi |
+| Level | 01 |
+| Vulnerability | Accounting Invariant Violation |
+| Severity | High |
+| Status | Solved |
+| Category | Denial of Service |
 
 ## Objective
-There's a lending pool offering flash loans of DVT tokens for free.
-The goal: **make the pool stop offering flash loans** (Denial of Service).
+Stop the vault from offering flash loans permanently.
 
----
+## Root Cause
+The vault tracks token balance two ways:
+- totalSupply: manually tracked via deposit()
+- asset.balanceOf(address(this)): real ERC20 balance
 
-## Contract
+Flash loan asserts these are always equal:
+if (convertToShares(totalSupply) != totalAssets()) revert InvalidBalance();
 
-```solidity
-// UnstoppableLender.sol (simplified)
-contract UnstoppableLender {
-    IERC20 public immutable damnValuableToken;
-    uint256 public poolBalance;
+ERC20 tokens can be sent directly to any address bypassing deposit().
+One direct transfer breaks this assertion forever.
 
-    function depositTokens(uint256 amount) external {
-        poolBalance += amount;
-        damnValuableToken.transferFrom(msg.sender, address(this), amount);
-    }
+## Proof of Concept
+// Send 1 token directly - bypasses deposit()
+await token.transfer(vault.address, 1)
 
-    function flashLoan(uint256 borrowAmount) external {
-        uint256 balanceBefore = damnValuableToken.balanceOf(address(this));
+// Now totalSupply != balanceOf
+// Every flashLoan() call reverts forever
 
-        // ← THIS LINE IS THE VULNERABILITY
-        assert(poolBalance == balanceBefore); // assumes these are always equal
-
-        damnValuableToken.transfer(msg.sender, borrowAmount);
-        // ... borrower executes ...
-        damnValuableToken.transferFrom(msg.sender, address(this), borrowAmount);
-    }
-}
-```
-
----
-
-## Vulnerability
-
-**Type:** Accounting Invariant Violation / Griefing DoS  
-**Severity:** High
-
-The contract tracks token balance in two ways:
-1. `poolBalance` — manually tracked via `depositTokens()`
-2. `damnValuableToken.balanceOf(address(this))` — real ERC20 balance
-
-The `assert` assumes these are ALWAYS equal. But ERC20 tokens can be **sent directly** to any address — bypassing `depositTokens()`. If you send tokens directly to the contract, `balanceOf` increases but `poolBalance` doesn't → the assert fails → flash loans are permanently broken.
-
----
-
-## Exploit
-
-```javascript
-// Send 1 token directly to the pool — bypassing depositTokens()
-await token.transfer(pool.address, 1)
-
-// Now poolBalance != balanceOf → assert fails → pool is bricked
-```
-
----
+## Attack Flow
+Attacker sends 1 token directly to vault
+balanceOf increases but totalSupply unchanged
+assertion fails on every flashLoan() call
+protocol permanently bricked
 
 ## Fix
+Change strict equality to greater than or equal:
+if (convertToShares(totalSupply) > totalAssets()) revert InvalidBalance();
 
-```solidity
-// Don't use assert for invariants that external actors can break
-// Use actual balance, not a manually-tracked variable
-function flashLoan(uint256 borrowAmount) external {
-    uint256 balanceBefore = damnValuableToken.balanceOf(address(this));
-    require(balanceBefore >= borrowAmount, "Not enough tokens");
-    // Remove the assert entirely — or track balance from transfers only
-}
-```
+## Key Takeaways
+Never assume balanceOf(address(this)) equals internal accounting.
+Tokens can always be sent directly to any address.
 
----
+Audit grep:
+grep -n "balanceOf(address(this))" contracts/*.sol
 
-## Key Lesson
-
-> Never assume that manually-tracked accounting variables equal actual token balances. Tokens can be sent directly to any contract address. If your protocol breaks when this happens, that's a griefing vulnerability.
-
----
+## References
+- SWC-132: Unexpected Ether Balance
 
 ## Status
-- [x] Solved on Damn Vulnerable DeFi
-- [x] Foundry test written
-- [x] Added to GitHub
+- Solved on Damn Vulnerable DeFi
+- Foundry test written
+- Added to GitHub
