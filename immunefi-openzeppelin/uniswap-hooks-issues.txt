@@ -1,0 +1,92 @@
+#129 - Withdrawal accounting can underflow after earlier withdrawals, permanently blocking some participants
+  Created: 2026-04-29T22:32:14Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/129
+
+#128 - Fix Final cancel on LimitOrderHook
+  Created: 2026-04-29T22:24:06Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/pull/128
+
+#127 - Final cancel clears accounting while the hook still holds accrued fee claims
+  Created: 2026-04-29T22:21:55Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/127
+
+#126 - Fix HookSwap event emission
+  Created: 2026-04-28T21:56:27Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/pull/126
+
+#125 - Fix H2-M1 Limit Order Hook
+  Created: 2026-03-30T20:58:29Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/pull/125
+
+#122 - ReHypothecationHook: add slippage protection to addReHypothecatedLiquidity and removeReHypothecatedLiquidity
+  Created: 2026-02-19T22:24:57Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/122
+
+#121 - LimitOrder: Contract hold ETH can be stolen via native currency orders due to settlement error
+  Created: 2026-02-18T23:43:38Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/121
+
+#120 - AntiSandwich: Beginning-of-block checkpoint is mutated and incomplete
+  Created: 2026-02-18T15:19:15Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/120
+
+#119 - LimitOrderHook: H-01, H-02 fix
+  Created: 2026-02-12T22:09:43Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/pull/119
+
+#118 - Extend LimitOrderHook to support native currency
+  Created: 2026-01-30T20:33:10Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/pull/118
+
+#117 - Cleanup
+  Created: 2026-01-19T11:45:19Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/117
+
+#116 - LimitOrderHook: adding native token support
+  Created: 2026-01-15T16:01:39Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/116
+
+#113 - Update to new OpenZeppelin docs generation
+  Created: 2025-12-05T23:28:52Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/pull/113
+
+#92 - Add a CHANGELOG.md
+  Created: 2025-07-14T20:08:26Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/92
+
+#88 - Compatibility with v4-router and latest solc versions.
+  Created: 2025-07-05T18:38:16Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/88
+
+#81 - Proposal: Add Hook for Volume-Based Dynamic Fees
+  Created: 2025-06-24T15:52:59Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/81
+
+#75 - Consider `LiquidityPenaltyHook` `blockNumberOffset` modification through override instead of construction
+  Created: 2025-06-12T16:29:40Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/75
+
+#44 - Update `_modifyLiquidity` in `BaseCustomCurve` to use `IPoolManager.ModifyLiquidityParams`
+  Created: 2025-02-20T15:31:35Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/44
+
+#43 - Optimize deltas in unlock callback for `BaseCustomAccounting`
+  Created: 2025-02-20T15:09:32Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/43
+
+#41 - Added docs examples
+  Created: 2025-02-11T23:12:59Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/pull/41
+
+#13 - TWAMMHook
+  Created: 2024-10-07T18:45:27Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/13
+
+#12 - StopLossOrderHook
+  Created: 2024-10-07T18:44:55Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/12
+
+#9 - MinLVRHook
+  Created: 2024-10-07T18:43:06Z
+  URL: https://github.com/OpenZeppelin/uniswap-hooks/issues/9
+
